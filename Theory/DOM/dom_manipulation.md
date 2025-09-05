@@ -1,4 +1,4 @@
-#📘DOM Manipulation in JavaScript
+# 📘DOM Manipulation in JavaScript
 
 ---
 
