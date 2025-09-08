@@ -137,3 +137,42 @@ Interlinked objects can still be collected if no root references point to them.
 The mark-and-sweep algorithm is the primary strategy.
 
 Modern engines use optimizations (generational, incremental, idle-time) to make GC efficient and smooth.
+
+
+
+# 🗑️ Short-Lived vs Long-Lived Objects in JavaScript Garbage Collection
+
+Modern JavaScript engines (like V8 in Chrome/Node.js) use a **generational garbage collector**.  
+This is based on the **weak generational hypothesis**:
+
+> Most objects die young, while only a few live long.
+
+---
+
+## 🔹 How GC Classifies Objects
+
+1. **Newly created objects → Short-lived (Young Generation)**  
+   - All new objects start in the **young generation** (also called *new space*).  
+   - This memory space is small and collected **frequently**.  
+   - If an object becomes unreachable quickly (e.g., temporary variables), it gets collected immediately.
+
+2. **Survivors → Promoted to Old Generation**  
+   - If an object survives one or more garbage collection cycles in the young generation,  
+     the GC assumes it’s **long-lived** and promotes it to the **old generation** (also called *old space*).  
+   - Old generation is scanned **less often** because it’s larger and expensive to traverse.
+
+---
+
+## 🔹 Example
+
+```js
+function testGC() {
+  // short-lived
+  let temp = { a: 1, b: 2 };
+
+  // long-lived
+  window.session = { user: "John", token: "xyz" };
+}
+
+testGC();
+```
