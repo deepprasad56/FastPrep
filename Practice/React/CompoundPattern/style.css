@@ -1,0 +1,40 @@
+body {
+  font-family: sans-serif;
+  -webkit-font-smoothing: auto;
+  -moz-font-smoothing: auto;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+  font-smooth: always;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+.tablist{
+  display: flex;
+ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+ width: fit-content;
+  
+}
+.tab{
+  background-color: white;
+  padding:10px 20px;
+  outline: none;
+  border: none;
+
+}
+.active{
+  background-color: rgb(40, 130, 233);
+  border: 2px solid white;
+  font-weight: bold;
+  color: white;
+}
+.tab_panels{
+  width: stretch;
+  height: 500px;
+  padding: 10px;
+  
+}
